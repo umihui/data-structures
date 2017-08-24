@@ -18,13 +18,11 @@ stackMethods.push = function (value) {
 
 stackMethods.pop = function () {
   var keyArray = Object.keys(this);
-  if (keyArray.length === 0) {
-    return undefined;
-  } else {
-    var r = this[keyArray.length];
-    delete this[keyArray.length];
-    return r;
-  }
+
+  var r = this[keyArray.length];
+  delete this[keyArray.length];
+  return r;
+  
   // body...
 };
 
