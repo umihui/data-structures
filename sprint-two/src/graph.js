@@ -2,10 +2,10 @@
 
 // Instantiate a new graph
 var Graph = function() {
-  var obj = Object.create(Graph.prototype);
-  obj.storage = [];
-  obj.edge = [];  
-  return obj;
+  //var obj = Object.create(Graph.prototype);
+  this.storage = [];
+  this.edge = [];  
+  //return obj;
 };
 
 // Add a node to the graph, passing in the node's value.
