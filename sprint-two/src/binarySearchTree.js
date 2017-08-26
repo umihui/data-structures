@@ -1,6 +1,6 @@
 var BinarySearchTree = function(value) {
   var tree = {};
-  tree.value;
+  tree.value = value;
   tree.left;
   tree.right;
   tree.insert = BinarySearchTreeMethod.insert;
@@ -20,29 +20,52 @@ BinarySearchTreeMethod.insert = function(node) {
   } else if ( node > this.value) {
     if (!this.right) {
       this.right = BinarySearchTree(node);
-      this.right.value = node;
+      //console.log(this.right);
     } else {
       this.right.insert(node);
     }  
   } else if (node < this.value) {
     if (!this.left) {
       this.left = BinarySearchTree(node);
-      this.left.value = node;
+      //console.log(this.left);
     } else {
       this.left.insert(node);
     } 
   }   
 };
 
-BinarySearchTreeMethod.contains = function(node) {
-  if (this.value = node) {
-    return true;
-  } else {
-  }
+BinarySearchTreeMethod.contains = function(v) {
 
+  if (this.value === v) {
+    console.log('test ' + this.value);
+    return true;
+  } else if ( this.value < v) {
+    if (!this.right) {
+      return false;
+    } else {
+      console.log(this.right);
+      console.log(this.right.value);
+      return this.right.contains(v); 
+    }
+  } else if ( this.value > v) {
+    if (!this.left) {
+      return false;
+    } else {
+      return this.left.contains(v);
+    }
+  }
 };
 
 BinarySearchTreeMethod.depthFirstLog = function(callback) {
+  callback(this.value);
+  if (this.right) {
+    this.right.depthFirstLog(callback);
+      
+  }
+  if (this.left) {
+    this.left.depthFirstLog(callback);
+  }
+
 
 };
 
